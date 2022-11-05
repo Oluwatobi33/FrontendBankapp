@@ -24,9 +24,6 @@ const NavBar = () => {
               aria-label="Toggle navigation"
             >
               <span class="navbar-toggler-icon top-bar"></span>
-              <span class="navbar-toggler-icon middle-bar"></span>
-              <span class="navbar-toggler-icon bottom-bar"></span>
-
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav ms-4 ">

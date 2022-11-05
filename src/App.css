@@ -61,8 +61,8 @@
   color: #007bff;
 }
 .icon li {
-padding:0px 12px;
-font-size: 27px;
+  padding: 0px 12px;
+  font-size: 27px;
 }
 .circle1 {
   background: #fff;
@@ -107,7 +107,7 @@ font-size: 27px;
 }
 h6 {
   font-size: 20px;
-  color:#00425F;
+  color: #00425f;
 }
 .wrapper p {
   font-size: 10px;
@@ -134,7 +134,7 @@ h6 {
 }
 
 .section5 {
-  background-color: #F3F5F6;
+  background-color: #f3f5f6;
   width: 75vw;
   height: 30vh;
   margin-bottom: 23px;
@@ -142,7 +142,7 @@ h6 {
   margin: auto;
 }
 .section6 {
-  background-color: #00425F;
+  background-color: #00425f;
   background-size: cover;
   width: 100vw;
   height: 70vh;
@@ -161,10 +161,9 @@ h6 {
   color: #18425d;
 }
 
-.pay{
+.pay {
   color: #00425f;
   font-size: 14px;
-
 }
 .btn-md {
   padding: 2px 13px !important;
@@ -179,7 +178,7 @@ h6 {
   text-align: center;
 }
 
-.list  li {
+.list li {
   list-style-type: none;
   color: #353f50;
   font-weight: 400 !important;
@@ -296,7 +295,6 @@ body {
   opacity: 1;
 }
 
-
 .day h3 {
   color: #18425d;
   font-style: normal;
@@ -386,7 +384,9 @@ body {
   color: #fff;
   padding-bottom: 20px;
   background-color: none;
-  font-family: -apple-system, BlinkMacSystemFont, segoe ui, Roboto, helvetica neue, Arial, noto sans, sans-serif, apple color emoji, segoe ui emoji, segoe ui symbol, noto color emoji;
+  font-family: -apple-system, BlinkMacSystemFont, segoe ui, Roboto,
+    helvetica neue, Arial, noto sans, sans-serif, apple color emoji,
+    segoe ui emoji, segoe ui symbol, noto color emoji;
 }
 
 .custom h3 {
@@ -407,7 +407,7 @@ body {
 /* .{
   box-shadow: 0 4px 24px rgb(0 0 0 / 14%);
 } */
-.wrapper{
+.wrapper {
   background: #fff;
   box-shadow: 0 4px 24px rgb(0 0 0 / 14%);
   border-radius: 16px;
@@ -457,13 +457,11 @@ body {
   line-height: 24px;
 }
 
-@media screen and (min-width:480px) {
-
+@media screen and (min-width: 480px) {
   .about1 {
     color: #00425f;
     font-size: 14px !important;
     text-align: center;
-
   }
 
   .about {
@@ -472,7 +470,6 @@ body {
     font-size: 14px !important;
     font-weight: 600 !important;
     text-transform: uppercase;
-
   }
 
   /* li {
@@ -483,68 +480,67 @@ body {
     font-size: 19px;
     text-align: justify;
   } */
-.section7 {
-  background-color:  #00425f;
-  background-size: cover;
-  height: 39vh;
-  width: 100vw;
-}
+  .section7 {
+    background-color: #00425f;
+    background-size: cover;
+    height: 39vh;
+    width: 100vw;
+  }
 
-.totalPrice {
-  border: 1px solid black;
-  width: 100vw;
-  height: 29vh;
-  margin-top: 23px;
-}
-.service li {
-  display: inline-block;
-
-}
-.btn-warning {
-  padding: 12px 23px !important;
-}
-.ele {
-  padding: 17px;
-  background-color: rgb(57, 57, 19);
-  border-radius: 9px;
-  /* margin-right: 23px; */
-}
-.section11 {
-  background-image: url(./assest/image/Paypoint.webp);
-  height: 55vh;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-.sp {
-  padding: 19px 33px;
-  background-color:var(--bs-btn-active-border-color);
-  border-radius: 9px;
-}
-.btn-success {
-  padding: 12px 73px !important;
-}
-.section9 {
-  background-color:white;
-  box-shadow: 0 4px 24px rgb(0 0 0 / 44%);
-  background-size: cover;
-  height: 30vh;
-  width: 100vw;
-  margin-top: -23px;
-}
-.section10 {
-  background-color:white;
-  box-shadow: 0 4px 24px rgb(0 0 0 / 44%);
-  background-size: cover;
-  height: 74vh;
-  width: 100vw;
-  margin-top: 23px;
-}
-.resize {
-  border-top: 1px solid black;
-  width: 90vw;
-  height: 7vh;
-  margin-top: 23px;
-}
+  .totalPrice {
+    border: 1px solid black;
+    width: 100vw;
+    height: 29vh;
+    margin-top: 23px;
+  }
+  .service li {
+    display: inline-block;
+  }
+  .btn-warning {
+    padding: 12px 23px !important;
+  }
+  .ele {
+    padding: 17px;
+    background-color: rgb(57, 57, 19);
+    border-radius: 9px;
+    /* margin-right: 23px; */
+  }
+  .section11 {
+    background-image: url(./assest/image/Paypoint.webp);
+    height: 55vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .sp {
+    padding: 19px 33px;
+    background-color: var(--bs-btn-active-border-color);
+    border-radius: 9px;
+  }
+  .btn-success {
+    padding: 12px 73px !important;
+  }
+  .section9 {
+    background-color: white;
+    box-shadow: 0 4px 24px rgb(0 0 0 / 44%);
+    background-size: cover;
+    height: 30vh;
+    width: 100vw;
+    margin-top: -23px;
+  }
+  .section10 {
+    background-color: white;
+    box-shadow: 0 4px 24px rgb(0 0 0 / 44%);
+    background-size: cover;
+    height: 74vh;
+    width: 100vw;
+    margin-top: 23px;
+  }
+  .resize {
+    border-top: 1px solid black;
+    width: 90vw;
+    height: 7vh;
+    margin-top: 23px;
+  }
   .circle4 {
     background: #fff;
     box-shadow: 0 4px 24px rgb(0 0 0 / 14%);
@@ -555,7 +551,6 @@ body {
     max-width: 100%;
     padding: 12px 10px;
   }
-
 }
 
 .finegirl {
@@ -580,5 +575,47 @@ body {
 
   100% {
     transform: translateY(-30px);
+  }
+}
+@media only screen and (min-width: 300px) {
+  .circle {
+    background: #fff;
+    box-shadow: 0 4px 24px rgb(0 0 0 / 12%);
+    border-radius: 16px;
+    height: 90%;
+    margin: 32px 0 10px;
+    width: 100%;
+    font-size: 28px;
+    text-align: center;
+    max-width: 100%;
+    padding: 14px 0px;
+  }
+  .circle1 {
+    background: #fff;
+    box-shadow: 0 4px 24px rgb(0 0 0 / 14%);
+    border-radius: 16px;
+    height: 45vh;
+    margin-top: 74px;
+    width: 100%;
+    max-width: 100%;
+    padding: 12px 10px;
+  }
+  .list li {
+    list-style-type: none;
+    color: #353f50;
+    font-weight: 400 !important;
+    line-height: 23px;
+    font-size: 11px;
+    text-align: center;
+  }
+  .circle3 {
+    background: #fff;
+    box-shadow: 0 4px 24px rgb(0 0 0 / 14%);
+    border-radius: 16px;
+    height: 30vh;
+    margin: 0 0 30px;
+    width: 100%;
+    max-width: 100%;
+    padding: 12px 10px;
   }
 }
