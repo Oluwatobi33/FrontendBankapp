@@ -15,13 +15,14 @@ import Background from './component/Background';
 import Error from './component/Error';
 import Dashboard from './component/Dashboard';
 import Home from './component/Home';
+import Contact from './component/Contact';
 function App() {
   return (
     <>
       <Routes>
-         <Route path='/' element={<Home />}></Route>
-         <Route path='/navbar' element={<NavBar />}></Route>
-        <Route path='/Background' element={<Background/>}></Route>
+        <Route path='/' element={<Home />}></Route>
+        <Route path='/navbar' element={<NavBar />}></Route>
+        <Route path='/Background' element={<Background />}></Route>
         <Route path='/shop' element={<Shop />}></Route>
         <Route path='/download' element={<Download />}></Route>
         <Route path='/existingCust' element={<ExistingCust />}></Route>
@@ -29,10 +30,11 @@ function App() {
         <Route path='/footer' element={<Footer />}></Route>
         <Route path='/signup' element={<Signup />} />
         <Route path='/signin' element={<Signin />} />
-        <Route path='/Every' element={<Every/>} />
-        <Route path='/Dashboard' element={<Dashboard />} /> 
-        <Route path='/product' element={<Product/>} /> 
-        <Route path='/Error' element={<Error />} />
+        <Route path='/Every' element={<Every />} />
+        <Route path='/Dashboard' element={<Dashboard />} />
+        <Route path='/product' element={<Product />} />
+        <Route path='/Contact' element={<Contact />} />
+        <Route path='/*' element={<Error />} />
       </Routes>
     </>
   );

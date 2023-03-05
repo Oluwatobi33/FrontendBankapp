@@ -34,7 +34,7 @@ const ExistingCust = () => {
                     </div>
                     <div className="col-md-4">
                         <div className="circle3">
-                            <img src="https://www.interswitchgroup.com/assets/images/consumer/secured.svg" className="img-responsive img-fluid float-start" style={{ width:"4vw" }} />
+                            <img src="https://www.interswitchgroup.com/assets/images/consumer/secured.svg" className="img-responsive img-fluid float-start" style={{ width: "4vw" }} />
                             <div className='custom float-start mt-4'>
                                 <h3 className='card-title text-md-start'>Customer Friendly</h3>
                                 <ul className="card-text list">
