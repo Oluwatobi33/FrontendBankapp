@@ -21,13 +21,12 @@
 
 .nav-link {
   color: #353f50;
-  font-size: 14px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   text-decoration: none;
   padding-top: 17px;
-  font-size: 12px !important;
+  font-size: 19px !important;
   transition: 2s !important;
 }
 
@@ -96,7 +95,7 @@
   background: #479fc8;
   border-radius: 6px;
   font-weight: 600;
-  font-size: 10px;
+  font-size: 19px;
   line-height: 17px;
   padding: 8px 16px;
   color: #fff;
@@ -130,6 +129,7 @@ h6 {
   color: #479fc8;
   border: none;
   text-decoration: none;
+  font-size: 19px;
 }
 .rand {
   padding: 12px;
@@ -344,7 +344,7 @@ body {
   color: #353f50;
   font-style: normal;
   font-weight: 400;
-  font-size: 12px;
+  font-size: 1px;
   line-height: 24px;
 }
 

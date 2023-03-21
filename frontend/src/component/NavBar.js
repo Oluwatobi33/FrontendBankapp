@@ -11,7 +11,7 @@ const NavBar = () => {
             <a className="navbar-brand" style={{ marginLeft: "11vw" }} href="#">
               <img
                 src="https://www.interswitchgroup.com/assets/images/home/interswitch_logo.svg"
-                style={{ width: "100px" }}
+                style={{ width: "150px" }}
                 className="img-responsive img-fluid"
               />
             </a>
@@ -54,8 +54,12 @@ const NavBar = () => {
                   </a>
                 </li>
                 <li className="nav-item">
-                  <Link to={'/contact'}>
-                    <a className="nav-link" style={{ textDecoration: "none ! important" }} href="#">
+                  <Link to={"/contact"}>
+                    <a
+                      className="nav-link"
+                      style={{ textDecoration: "none ! important" }}
+                      href="#"
+                    >
                       contact
                     </a>
                   </Link>
@@ -67,12 +71,13 @@ const NavBar = () => {
       </div>
       <div
         className="container-fluid"
-        style={{ backgroundColor: "#18425d", height: "8vh" }}>
+        style={{ backgroundColor: "#18425d", height: "8vh" }}
+      >
         <div className="container">
           <nav className="navbar py-3" style={{ marginLeft: "3vw" }}>
             <div className="container-fluid">
               <span className="navbar-text">
-                <h6 className="text-white">Quickteller</h6>
+                <h6 className="text-white fs-4">Quickteller</h6>
               </span>
               <span>
                 <p className="text-white">

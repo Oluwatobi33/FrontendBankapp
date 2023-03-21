@@ -21,6 +21,8 @@ const Signin = () => {
     const [success, setsuccess] = useState("")
     const [Error, setError] = useState("")
     const [loader, setloader] = useState(false)
+    const [isloading, setisLoading] = useState(false)
+    const [value, setvalue] = useState("")
     // const [Error, setError] = useState("")
     const formik = useFormik({
         initialValues: {
@@ -28,15 +30,17 @@ const Signin = () => {
             Password: ""
         },
         onSubmit: (values) => {
+            setisLoading(true)
             axios.post(`${baseurl}signin`, values).then((data) => {
-                setloader(true)
                 if (data) {
                     console.log(data);
                     let Err = data.data.message;
-                    if (Err == "Email is not found") {
-                        setloader(prev => true)
+                    if (Err == "Email not found") {
+                        setvalue(Err)
+                        setisLoading(false)
                     } else if (Err == "Invaild password") {
-                        setsuccess(prev => true)
+                        setvalue(Err)
+                        setisLoading(false)
                         setError("Invalid Password")
                     } else {
                         if (Err == "Token generated") {
@@ -65,30 +69,31 @@ const Signin = () => {
             <div className="container mt-5">
                 <div className="row justify-content-center">
                     <div className='text-center col-md-4'>
-                        <img src="https://www.interswitchgroup.com/assets/images/home/interswitch_logo.svg" style={{ width: '100px', marginBottom: "11px" }} className='img-responsive img-fluid' />
+                        <img src="https://www.interswitchgroup.com/assets/images/home/interswitch_logo.svg" style={{ width: '200px', marginBottom: "11px" }} className='img-responsive img-fluid' />
                         <h4 style={{ color: "#18425d" }} className='h3'>Welcome To Our Career Page</h4>
                         <p className='text-dark h1'>Login Page</p>
                     </div>
                 </div>
-                <form action='' onSubmit={formik.handleSubmit}>
+                <form onSubmit={formik.handleSubmit}>
                     <div className="row justify-content-center my-3">
-                        <div className="col-md-6 col-sm-6">
+                        <div className="col-md-8 col-sm-6 my-3">
                             <div className="row justify-content-center">
                                 <div className="col-md-6 text-center my-3">
-                                    <input type="text" className="inp" name='Email' placeholder="Email"
-                                        onChange={formik.handleChange} />
+                                    <p className={value ? 'alert alert-danger' : ""}>{value}</p>
+                                    <input type="text" className="inp" name='Email' placeholder="Email" onChange={formik.handleChange} />
                                     <div className='text-danger who'>{formik.errors.Email}</div>
-                                    <input type="text" className="inp" name='Password' placeholder="Password" onChange={formik.handleChange} />
-                                    <div className='text-danger who'>{formik.errors.Password}</div>
+                                    <input type="password" className="inp" name='Password' placeholder="Password" onChange={formik.handleChange} />
+                                    <Link to="/Forget"><a href="#" className=' text-decoration-none float-end my-2 h5'>Forget Password</a></Link>
+                                    <div className='text-danger who my-3'>{formik.errors.Password}</div>
                                     <div className="text-center">
-                                        <button type='submit' className='btn btn-primary btn-lg me-2'>Signin</button>
-                                        <small className='text-secondary me-2 h5'>Don't have an account yet?<Link to='./Signup'><span>Signup</span></Link></small>
+                                        <button type='submit' className='btn py-2 px-5 me-2' disabled={isloading} style={{ background: " #00425f", color: "white", fontSize: "19px" }}>{isloading ? " Processing... " : "Signin"}</button>
+                                        <small className='text-secondary h6'>Don't have an account yet?  <Link to='./Signup'><span>Signup</span></Link></small>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-6 col-sm-6">
-                            <img src={img1} className='img-responsive img-fluid w-100' />
+                        <div className="col-md-4 col-sm-6">
+                            <img src={img1} className='img-responsive img-fluid w-300' />
                         </div>
                     </div>
                 </form>

@@ -3,14 +3,11 @@ const cloudinary = require('cloudinary');
 const bcrypt = require("bcrypt");
 const jwt = require('jsonwebtoken')
 // const emmanuel = require("JSON_SECRET")
-const { UserModel, RegisterModel } = require("../model/model");
+const { UserModel, RegisterModel, historyModel } = require("../model/model");
 
 const { customermail, useraccountNumber, userName } = require('../mailler')
 require('dotenv').config()
-const accno = (req, res) => {
-    const accountNumber = req.body
-    console.log(accountNumber);
-}
+
 const signup = (req, res) => {
     const details = req.body
     let useremail = req.body.Email
@@ -18,7 +15,6 @@ const signup = (req, res) => {
     let accno = req.body.accno
     let PhoneNumber = req.body.PhoneNumber
     let FullName = req.body.FullName
-    console.log(details);
     RegisterModel.find({ Email }, (err, result) => {
         if (err) { } else {
             if (result == "") {
@@ -58,12 +54,89 @@ const login = (req, res) => {
             else {
                 const validPassword = await bcrypt.compare(Password, message.Password);
                 if (validPassword) {
-                    const token = jwt.sign({ _id: message._id }, process.env.JWT_SECRET, { expiresIn: 120 })
+                    const token = jwt.sign({ _id: message._id }, process.env.JWT_SECRET, { expiresIn: "2h" })
                     res.send({ token, message: "Token generated", status: true });
                 } else {
                     res.send({ status: false, message: "Invaild password" })
                 }
             }
+        }
+    })
+}
+
+const accno = (req, res) => {
+    const accno = req.body.account
+    console.log(accno);
+    RegisterModel.find({ accno }, (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            if (result == [""]) {
+                res.send({ message: "Invalid account", status: true, result })
+            } else {
+                res.send({ message: "Valid account", status: true, result })
+            }
+        }
+    })
+}
+
+const pin = (req, res) => {
+    const { pin, customerId } = req.body
+    RegisterModel.find({ _id: customerId }, async (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            if (result == "") {
+                res.send({ message: "Invalid customerId", status: false, })
+            } else {
+                const validPin = await bcrypt.compare(pin, result[0].Pin);
+                console.log(validPin);
+                if (validPin) {
+                    res.send({ message: "Valid pin", status: true, result })
+                } else {
+                    res.send({ message: "Invalid pin", status: false })
+                }
+            }
+        }
+    })
+}
+
+
+const update = (req, res) => {
+    let _id = req.body._id
+    let FullName = req.body.FullName
+    console.log(update);
+    console.log(_id);
+    RegisterModel.findByIdAndUpdate({ _id }, { 'FullName': req.body.FullName }, (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send({ message: "updated", result })
+        }
+    })
+}
+
+const createhistory = (req, res) => {
+    let customerId = req.body.customerId
+    historyModel.find({ customerId }, (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            if (result == "") {
+                res.send({ status: false, message: "No history yet" })
+            } else {
+                res.send({ result, status: true, message: "history seen" })
+                console.log(result);
+            }
+        }
+    })
+}
+
+const history = (req, res) => {
+    let inform = req.body;
+    historyModel.create(inform, (err, result) => {
+        if (err) { } else {
+            res.send({ result })
         }
     })
 }
@@ -93,6 +166,7 @@ const Interdisplay = (req, res) => {
     })
 
 }
+
 
 const signin = (req, res) => {
     const { Email, Password } = req.body
@@ -167,4 +241,4 @@ const getDetails = (request, response) => {
         }
     })
 }
-module.exports = { uploadfile, signup, signin, login, Interdisplay, accno, dashboard }
+module.exports = { uploadfile, signup, signin, login, Interdisplay, accno, pin, dashboard, update, history, createhistory }

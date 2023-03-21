@@ -1,17 +1,15 @@
 const express = require('express')
 const app = express()
-require("dotenv").config()
 const PORT = process.env.PORT
 const ejs = require('ejs')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const dotenv = require('dotenv')
+require("dotenv").config()
 const mongoose = require('mongoose')
 const cloudinary = require('cloudinary')
 
-dotenv.config();
-
-const { uploadfile, signup, signin, Interdisplay, login, accno } = require('./control/usercontroller')
+const { uploadfile, signup, signin, Interdisplay, login, accno, pin, update, history, createhistory } = require('./control/usercontroller')
 
 // const { sendmail } = require('./mailler')
 app.set("view engine", "ejs");
@@ -33,11 +31,18 @@ cloudinary.config({
 
 app.post('/signup', signup)
 app.post("/signin", login)
+
 app.post('/signin', signin)
-// app.get("/dashboard", dashboard)
+
+app.post("/history", history)
 app.get("/dashboard", Interdisplay)
 app.post('/upload', uploadfile)
 app.post('/accno', accno)
+app.post('/pin', pin)
+app.post('/update', update)
+app.post('createhistory', createhistory)
+
+
 
 app.get('/', (req, res) => {
     res.render("Home")

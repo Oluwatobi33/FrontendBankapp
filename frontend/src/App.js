@@ -16,6 +16,8 @@ import Error from './component/Error';
 import Dashboard from './component/Dashboard';
 import Home from './component/Home';
 import Contact from './component/Contact';
+import Forget from './component/Forget';
+import Hist from './component/Hist';
 function App() {
   return (
     <>
@@ -34,6 +36,8 @@ function App() {
         <Route path='/Dashboard' element={<Dashboard />} />
         <Route path='/product' element={<Product />} />
         <Route path='/Contact' element={<Contact />} />
+        <Route path='/Forget' element={<Forget />} />
+        <Route path='/hist' element={<Hist />} />
         <Route path='/*' element={<Error />} />
       </Routes>
     </>
