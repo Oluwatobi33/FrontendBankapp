@@ -48,14 +48,12 @@ const Signup = () => {
             Pin: "",
             PhoneNumber: "",
             // cardno: `431${Math.floor(Math.random() * 100000000)}`,
-            bvn: `356890${Math.floor(Math.random() * 100000)}`,
-            defaultMoney: 0,
-            DateCreated,
+            balance: 0,
             history: ""
         },
         onSubmit: (values) => {
             setisLoading(true)
-            let userdata = { Fullname: values.Fullname, Email: values.Email, Password: values.Password, Pin: values.Pin, PhoneNumber: values.PhoneNumber, accno: values.accno, bvn: `356890${Math.floor(Math.random() * 100000)}`, defaultMoney: values.defaultMoney, DateCreated, history: values.history }
+            let userdata = { Fullname: values.Fullname, Email: values.Email, Password: values.Password, Pin: values.Pin, PhoneNumber: values.PhoneNumber, accountNumber: values.PhoneNumber, bvn: `${values.PhoneNumber}${Math.floor(Math.random() * 9)}`, balance: values.balance, DateCreated, history: values.history }
             // console.log(userdata);
             axios.post(`${baseurl}signup`, userdata).then((credentials) => {
                 setisLoading(false)

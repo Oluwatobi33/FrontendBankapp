@@ -8,11 +8,19 @@ const { UserModel, RegisterModel, historyModel } = require("../model/model");
 const { customermail, useraccountNumber, userName } = require('../mailler')
 require('dotenv').config()
 
+
+// const information = req.body;
+// let useremail = req.body.email;
+// let email = req.body.email;
+// let accountNumber = req.body.accountNumber;
+// let phoneno = req.body.phoneno;
+// let Name = req.body.Name;
+
 const signup = (req, res) => {
     const details = req.body
     let useremail = req.body.Email
     let Email = req.body.Email
-    let accno = req.body.accno
+    let accountNumber = req.body.accountNumber;
     let PhoneNumber = req.body.PhoneNumber
     let FullName = req.body.FullName
     RegisterModel.find({ Email }, (err, result) => {
@@ -24,7 +32,7 @@ const signup = (req, res) => {
                             RegisterModel.create(details, (err) => {
                                 if (err) { } else {
                                     userName(FullName)
-                                    useraccountNumber(accno)
+                                    useraccountNumber(accountNumber)
                                     customermail(useremail)
                                     res.send({ message: "saved", status: true })
                                 }
@@ -64,21 +72,26 @@ const login = (req, res) => {
     })
 }
 
-const accno = (req, res) => {
-    const accno = req.body.account
-    console.log(accno);
-    RegisterModel.find({ accno }, (err, result) => {
+
+
+const account = (req, res) => {
+    const accountNumber = req.body.account
+    console.log(accountNumber);
+    RegisterModel.find({ accountNumber }, (err, result) => {
         if (err) {
             console.log(err);
         } else {
-            if (result == [""]) {
-                res.send({ message: "Invalid account", status: true, result })
+            if (result == "") {
+                res.send({ message: "Invalid account", status: false })
             } else {
                 res.send({ message: "Valid account", status: true, result })
+                console.log(result);
             }
         }
     })
+
 }
+
 
 const pin = (req, res) => {
     const { pin, customerId } = req.body
@@ -93,6 +106,7 @@ const pin = (req, res) => {
                 console.log(validPin);
                 if (validPin) {
                     res.send({ message: "Valid pin", status: true, result })
+
                 } else {
                     res.send({ message: "Invalid pin", status: false })
                 }
@@ -104,10 +118,10 @@ const pin = (req, res) => {
 
 const update = (req, res) => {
     let _id = req.body._id
-    let FullName = req.body.FullName
+    let update = req.body
     console.log(update);
     console.log(_id);
-    RegisterModel.findByIdAndUpdate({ _id }, { 'FullName': req.body.FullName }, (err, result) => {
+    RegisterModel.findByIdAndUpdate(_id, update, (err, result) => {
         if (err) {
             console.log(err);
         } else {
@@ -116,17 +130,41 @@ const update = (req, res) => {
     })
 }
 
-const createhistory = (req, res) => {
+const gethistory = (req, res) => {
     let customerId = req.body.customerId
     historyModel.find({ customerId }, (err, result) => {
         if (err) {
             console.log(err);
         } else {
             if (result == "") {
-                res.send({ status: false, message: "No history yet" })
+                let receiverId = req.body.customerId
+                historyModel.find({ receiverId }, (err, result) => {
+                    if (err) {
+                        console.log(err);
+                    } else {
+                        if (result == "") {
+                            res.send({ status: false, message: "No history yet" })
+                        } else {
+                            res.send({ result, status: true, message: "receiverId" })
+                        }
+                    }
+                })
             } else {
-                res.send({ result, status: true, message: "history seen" })
-                console.log(result);
+                let customerresult = result;
+                let receiverId = req.body.customerId
+                historyModel.find({ receiverId }, (err, result) => {
+                    if (err) {
+                        console.log(err);
+                    } else {
+                        if (result == "") {
+                            res.send({ customerresult, message: "customerresult" })
+                        } else {
+                            let receiverresult = result;
+                            let results = { customerresult, receiverresult }
+                            res.send({ results, status: true, message: "customerresult and receiverresult" })
+                        }
+                    }
+                })
             }
         }
     })
@@ -241,4 +279,4 @@ const getDetails = (request, response) => {
         }
     })
 }
-module.exports = { uploadfile, signup, signin, login, Interdisplay, accno, pin, dashboard, update, history, createhistory }
+module.exports = { uploadfile, signup, signin, login, Interdisplay, account, pin, dashboard, update, history, gethistory }

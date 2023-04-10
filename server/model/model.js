@@ -24,6 +24,7 @@ const InterswitchSchema = new mongoose.Schema(
         Fullname: String,
         Email: String,
         Password: String,
+        balance: Number,
         Pin: String,
         PhoneNumber: {
             type: String,
@@ -33,7 +34,7 @@ const InterswitchSchema = new mongoose.Schema(
             type: String,
             unique: true,
         },
-        defaultMoney: Number,
+        accountNumber: String,
 
     }
 )
@@ -41,7 +42,6 @@ const InterswitchSchema = new mongoose.Schema(
 InterswitchSchema.pre("save", async function (next) {
     const { Password } = this
     const salt = await genSalt(10)
-    // console.log(salt);
     try {
         const hashedPassword = await hash(Password, salt)
         this.Password = hashedPassword
@@ -66,25 +66,19 @@ InterswitchSchema.pre("save", async function (next) {
     }
 })
 
-
 const historySchema = new mongoose.Schema(
     {
-        customerId: {
-            type: String,
-            require: true,
-        },
+        customerId: String,
         Fullname: String,
-        Email: String,
         pBalance: String,
         Tbalance: String,
         added: String,
         transfer: String,
-        accno: String,
-        transactiontime: String,
-
+        received: String,
+        accountNumber: String,
+        transactiontime: String
     }
 )
-
 const historyModel = mongoose.model('historys', historySchema)
 const RegisterModel = mongoose.model('Allinterswitch', InterswitchSchema)
 const UserModel = mongoose.model('AllDetails', UserSchema)

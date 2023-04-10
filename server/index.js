@@ -9,7 +9,7 @@ require("dotenv").config()
 const mongoose = require('mongoose')
 const cloudinary = require('cloudinary')
 
-const { uploadfile, signup, signin, Interdisplay, login, accno, pin, update, history, createhistory } = require('./control/usercontroller')
+const { uploadfile, signup, signin, Interdisplay, login, account, pin, update, history, gethistory } = require('./control/usercontroller')
 
 // const { sendmail } = require('./mailler')
 app.set("view engine", "ejs");
@@ -37,10 +37,10 @@ app.post('/signin', signin)
 app.post("/history", history)
 app.get("/dashboard", Interdisplay)
 app.post('/upload', uploadfile)
-app.post('/accno', accno)
+app.post('/account', account)
 app.post('/pin', pin)
 app.post('/update', update)
-app.post('createhistory', createhistory)
+app.post('createhistory', gethistory)
 
 
 

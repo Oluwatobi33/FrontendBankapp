@@ -1,12 +1,14 @@
 const nodemailer = require("nodemailer")
 
-// let date = new Date().toLocaleString();
 
-let saccountNumber
-let sName
-const useraccountNumber = (accno) => {
-    saccountNumber = accno;
+let saccountNumber;
+let sName;
+
+
+const useraccountNumber = (accountNumber) => {
+    saccountNumber = accountNumber;
 }
+
 
 const userName = (FullName) => {
     sName = FullName;
@@ -43,6 +45,6 @@ const adminmail = async (emails) => {
             pass: process.env.MAIL_PASSWORD
         }
     })
-
 }
+
 module.exports = { customermail, useraccountNumber, userName, adminmail }
